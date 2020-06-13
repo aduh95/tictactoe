@@ -3,7 +3,7 @@ import { fork } from "child_process";
 import { fileURLToPath } from "url";
 
 import { startServer, refreshBrowser } from "./server.mjs";
-import { JS_DEV_FILE } from "./config.mjs";
+import { JS_DEV_FILE, SOURCE_FOLDER_URL } from "./config.mjs";
 
 const watcher = (event, fileName) => {
   console.log(event, fileName);
@@ -15,10 +15,7 @@ const watchDir = (dir) =>
   fs.readdir(dir).then((files) =>
     Promise.all(
       files
-        .filter(
-          (fileName) =>
-            !fileName.endsWith(".toml.d.ts") && !fileName.endsWith(".toml.js")
-        )
+        .filter((fileName) => !fileName.endsWith(".js"))
         .map((file) => new URL(file, dir))
         .map((fileURL) =>
           fs
@@ -44,4 +41,5 @@ import.meta
   })
   .then(startServer)
   .then(() => watchFile(JS_DEV_FILE))
+  .then(() => watchDir(SOURCE_FOLDER_URL))
   .catch(console.error);
