@@ -24,7 +24,11 @@ const dataset = [
 
 for (const data of dataset) {
   assert.strictEqual(
-    move(data.grid, data.cell, 1),
+    move(
+      data.grid.map((p) => ({ isOwnedBy: (pl) => p === pl })),
+      data.cell,
+      1
+    ),
     data.winner,
     `[
       ${data.grid.slice(0, 3)},

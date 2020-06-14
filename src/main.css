@@ -1,5 +1,30 @@
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
   display: grid;
+}
+
+main,
+.tic-tac-toe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 2px solid black;
+}
+main {
+  margin: 0 auto;
+}
+.cell {
+  width: 10vmin;
+  height: 10vmin;
+  border: 1px solid black;
+}
+.cell::before {
+  content: attr(data-player);
+}
+.win {
+  background-color: aqua;
 }
