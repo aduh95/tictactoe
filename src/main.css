@@ -33,3 +33,7 @@ main {
 .win:disabled {
   background-color: aqua;
 }
+
+canvas {
+  position: absolute;
+}

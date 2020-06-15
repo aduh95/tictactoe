@@ -1,4 +1,5 @@
 import getTicTacToeWinner from "./tictactoeWinning.js";
+import launchFireworks from "./fireworks.js";
 
 const cellInstances = new WeakMap();
 
@@ -145,10 +146,15 @@ class Grid extends Cell {
     if (!this.isEmpty()) return;
     const winningCells = getTicTacToeWinner(this.#cells, cell.id, player);
     if (winningCells) {
+      const boundingRect = this.htmlElement.getBoundingClientRect();
+      const canvas = launchFireworks(9, 200, boundingRect.height / 1000);
       for (const cellId of winningCells) {
         this.#cells[cellId].setWinningFlag();
       }
       this.setFoot(player);
+      canvas.style.top = boundingRect.top - boundingRect.height / 6 + "px";
+      canvas.style.left = boundingRect.left + "px";
+      document.body.append(canvas);
     }
   }
 
