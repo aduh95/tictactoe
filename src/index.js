@@ -140,8 +140,10 @@ class Grid extends Cell {
     if (!this.isLegal(cell)) {
       throw new Error("Illegal move");
     }
-    cell.setFoot(player);
-    this.checkForWinner(player, cell);
+    if (cell.isEmpty()) {
+      cell.setFoot(player);
+      this.checkForWinner(player, cell);
+    }
   }
 
   checkForWinner(player, cell) {
