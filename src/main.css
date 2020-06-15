@@ -25,6 +25,11 @@ main {
 .cell::before {
   content: attr(data-player);
 }
-.win {
+.cell:disabled {
+  color: unset;
+  background-color: grey;
+}
+.win,
+.win:disabled {
   background-color: aqua;
 }

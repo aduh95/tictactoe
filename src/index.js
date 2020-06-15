@@ -12,6 +12,9 @@ class Game {
   makeMove(cell) {
     if (!this.#currentGrid) {
       this.#currentGrid = this.#grids.find((grid) => grid.has(cell));
+      this.#grids.forEach((grid) => grid.disable());
+    } else {
+      this.#currentGrid.disable();
     }
     this.#currentGrid.makeMove(this.#currentPlayer, cell);
     this.checkForWinner();
@@ -19,6 +22,7 @@ class Game {
       (this.#players.indexOf(this.#currentPlayer) + 1) % this.#players.length
     ];
     this.#currentGrid = this.#grids[cell.id];
+    this.#currentGrid.enable();
   }
 
   checkForWinner() {
@@ -99,8 +103,11 @@ class Cell {
     return this.#id;
   }
 
-  _onclick(event) {
-    return this.props.onclick(this, event);
+  enable() {
+    this.htmlElement.disabled = false;
+  }
+  disable() {
+    this.htmlElement.disabled = true;
   }
 }
 class Grid extends Cell {
@@ -146,6 +153,20 @@ class Grid extends Cell {
       }
       this.setFoot(player);
     }
+  }
+
+  /**
+   * Enables empty cells
+   * When there are no empty cells, all cells are enabled.
+   */
+  enable() {
+    const lonelyCells = this.#cells.filter((cell) => cell.isEmpty());
+    (lonelyCells.length ? lonelyCells : this.#cells).forEach((cell) =>
+      cell.enable()
+    );
+  }
+  disable() {
+    this.#cells.forEach((cell) => cell.disable());
   }
 }
 
