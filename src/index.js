@@ -1,7 +1,6 @@
 import getTicTacToeWinner from "./tictactoeWinning.js";
 
 const cellInstances = new WeakMap();
-const gridInstances = new WeakMap();
 
 class Game {
   #grids = Array.from({ length: 9 }, (_, i) => new Grid(i));
@@ -39,11 +38,7 @@ class Game {
     }
   }
 
-  _onclick(cell, event) {
-    this.makeMove(cell);
-  }
-
-  render() {
+  get htmlElement() {
     const frag = document.createDocumentFragment();
     frag.append(...this.#grids.map((grid) => grid.htmlElement));
     return frag;
@@ -64,21 +59,23 @@ class Player {
 
 class Cell {
   #id;
-  #winningState = false;
   #owner;
-  htmlElement;
+  #htmlElement = this.createHTMLElement();
 
   constructor(id) {
     this.#id = id;
-    this.initHTMLElement();
   }
 
-  initHTMLElement() {
+  createHTMLElement() {
     const button = document.createElement("button");
     button.addEventListener("click", onclick);
     button.className = "cell";
     cellInstances.set(button, this);
-    this.htmlElement = button;
+    return button;
+  }
+
+  get htmlElement() {
+    return this.#htmlElement;
   }
 
   isOwnedBy(player) {
@@ -91,7 +88,6 @@ class Cell {
   }
 
   setWinningFlag() {
-    this.#winningState = true;
     this.htmlElement.classList.add("win");
   }
 
@@ -118,11 +114,10 @@ class Grid extends Cell {
     this.htmlElement.append(...this.#cells.map((cell) => cell.htmlElement));
   }
 
-  initHTMLElement(id) {
+  createHTMLElement() {
     const div = document.createElement("div");
     div.className = "tic-tac-toe";
-    gridInstances.set(div, this);
-    this.htmlElement = div;
+    return div;
   }
 
   has(cell) {
@@ -178,4 +173,4 @@ function onclick(event) {
   game.makeMove(cellInstances.get(event.target));
 }
 
-document.querySelector("main").append(game.render());
+document.querySelector("main").append(game.htmlElement);
