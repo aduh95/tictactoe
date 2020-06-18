@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 body {
   margin: 0;
@@ -21,6 +22,8 @@ main {
   width: 10vmin;
   height: 10vmin;
   border: 1px solid black;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .cell::before {
   content: attr(data-player);
@@ -28,6 +31,9 @@ main {
 .cell:disabled {
   color: unset;
   background-color: grey;
+}
+.cell:focus::after {
+  outline: 1px solid blue;
 }
 .win,
 .win:disabled {

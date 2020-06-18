@@ -71,6 +71,7 @@ class Cell {
     const button = document.createElement("button");
     button.addEventListener("click", onclick);
     button.className = "cell";
+    button.setAttribute("aria-label", "Empty cell");
     cellInstances.set(button, this);
     return button;
   }
@@ -85,6 +86,7 @@ class Cell {
 
   setFoot(player) {
     this.#owner = player;
+    this.htmlElement.removeAttribute("aria-label");
     this.htmlElement.dataset.player = player.symbol;
   }
 
