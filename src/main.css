@@ -6,6 +6,20 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
+  grid-template-rows: auto 1fr auto auto;
+}
+
+html,
+body {
+  height: 100%;
+}
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer {
+  margin: auto 0 1rem;
 }
 
 main,
@@ -16,12 +30,16 @@ main,
   border: 2px solid black;
 }
 main {
-  margin: 0 auto;
-  min-height: 90vmin;
+  margin: auto;
+}
+details {
+  margin: 1rem 0;
 }
 .cell {
   width: 10vmin;
   height: 10vmin;
+  min-width: 2rem;
+  min-height: 2rem;
   border: 1px solid black;
   -webkit-appearance: none;
   appearance: none;
