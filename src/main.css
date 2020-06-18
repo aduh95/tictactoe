@@ -43,3 +43,11 @@ main {
 canvas {
   position: absolute;
 }
+dialog canvas {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+}
+dialog::backdrop {
+  background-color: #222b;
+}
