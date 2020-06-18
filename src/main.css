@@ -17,6 +17,7 @@ main,
 }
 main {
   margin: 0 auto;
+  min-height: 90vmin;
 }
 .cell {
   width: 10vmin;
