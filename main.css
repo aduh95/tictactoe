@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+main,
+.tic-tac-toe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 2px solid black;
+}
+main {
+  margin: 0 auto;
+  min-height: 90vmin;
+}
+.cell {
+  width: 10vmin;
+  height: 10vmin;
+  border: 1px solid black;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.cell::before {
+  content: attr(data-player);
+}
+.cell:disabled {
+  color: unset;
+  background-color: grey;
+}
+.cell:focus::after {
+  outline: 1px solid blue;
+}
+.win,
+.win:disabled {
+  background-color: aqua;
+}
+
+canvas {
+  position: absolute;
+}
+dialog canvas {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+}
+dialog::backdrop {
+  background-color: #222b;
+}
