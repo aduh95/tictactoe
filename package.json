@@ -1,5 +1,6 @@
 {
   "name": "tic-tac-toe-ception",
+  "version": "0.1.0",
   "devDependencies": {
     "csso": "^4.0.3",
     "gh-pages": "^3.0.0",
