@@ -1,9 +1,7 @@
 {
   "name": "tic-tac-toe-ception",
   "devDependencies": {
-    "htm": "^3.0.4",
     "microbundle": "^0.12.0",
-    "preact": "^10.4.4",
     "ws": "^7.3.0"
   },
   "module": "dist/main.js",
@@ -12,5 +10,6 @@
     "build": "microbundle",
     "dev": "microbundle watch",
     "start": "node --experimental-import-meta-resolve scripts/watch.mjs"
-  }
+  },
+  "type": "module"
 }
