@@ -2,6 +2,9 @@ import Cell from "./Cell.js";
 import getTicTacToeWinner from "./tictactoeWinning.js";
 import launchFireworks from "./fireworks.js";
 
+const SUPPORT_FOR_SCROLL_INTO_VIEW = Boolean(
+  Element.prototype.scrollIntoViewIfNeeded
+);
 export default class Grid extends Cell {
   #cells;
 
@@ -63,6 +66,9 @@ export default class Grid extends Cell {
     (lonelyCells.length ? lonelyCells : this.#cells).forEach((cell) =>
       cell.enable()
     );
+    if (SUPPORT_FOR_SCROLL_INTO_VIEW) {
+      this.htmlElement.scrollIntoViewIfNeeded(true);
+    }
   }
   disable() {
     this.#cells.forEach((cell) => cell.disable());
