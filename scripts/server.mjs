@@ -16,6 +16,8 @@ const requestListener = async (req, res) => {
     fileURL = JS_DEV_FILE_MAP;
   } else if (req.url.endsWith(".css")) {
     res.setHeader("Content-Type", "text/css");
+  } else if (req.url.endsWith(".svg")) {
+    res.setHeader("Content-Type", "image/svg+xml");
   }
 
   fs.access(fileURL, constants.R_OK)

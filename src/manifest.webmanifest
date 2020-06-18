@@ -1,0 +1,15 @@
+{
+  "background_color": "white",
+  "theme_color": "#222",
+  "display": "standalone",
+  "name": "Tic-Tac-Toe-ception",
+  "short_name": "TTT-ception",
+  "start_url": "https://aduh95.github.io/tictactoe/",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
