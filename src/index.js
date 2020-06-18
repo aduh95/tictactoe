@@ -28,4 +28,6 @@ if (typeof PRODUCTION_ENV !== "undefined") {
         console.warn(error);
       });
   }
+} else {
+  import("../scripts/autoRefresh.js").catch(console.warn);
 }

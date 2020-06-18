@@ -1,19 +1,19 @@
 import { promises as fs, constants, createReadStream } from "fs";
 
-import { SOURCE_FOLDER_URL } from "./config.mjs";
-import { JS_DEV_FILE } from "./config.mjs";
-import { JS_DEV_FILE_MAP } from "./config.mjs";
+import { SOURCE_FOLDER } from "./config.mjs";
 
 const requestListener = async (req, res) => {
-  let fileURL = new URL(
-    req.url === "/" ? "index.html" : req.url.slice(1),
-    SOURCE_FOLDER_URL
+  const fileURL = new URL(
+    req.url === "/"
+      ? "index.html"
+      : req.url.startsWith("/scripts/")
+      ? ".." + req.url
+      : req.url.substring(1),
+    SOURCE_FOLDER
   );
+
   if (req.url.endsWith(".js")) {
     res.setHeader("Content-Type", "application/javascript");
-    fileURL = JS_DEV_FILE;
-  } else if (req.url.endsWith(".js.map")) {
-    fileURL = JS_DEV_FILE_MAP;
   } else if (req.url.endsWith(".css")) {
     res.setHeader("Content-Type", "text/css");
   } else if (req.url.endsWith(".svg")) {

@@ -1,8 +1,7 @@
 import { promises as fs } from "fs";
 import Terser from "terser";
 
-import { SOURCE_FOLDER, DIST_FOLDER } from "./build-config.mjs";
-import { ESM_FILE, SW_FILE } from "./build-config.mjs";
+import { SOURCE_FOLDER, DIST_FOLDER, ESM_FILE, SW_FILE } from "./config.mjs";
 
 const CACHE_VERSION = "v1";
 

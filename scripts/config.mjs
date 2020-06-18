@@ -1,10 +1,7 @@
-export const SOURCE_FOLDER_URL = new URL("../src/", import.meta.url);
+export const SOURCE_FOLDER = new URL("../src/", import.meta.url);
+export const DIST_FOLDER = new URL("../dist/", import.meta.url);
 
-export const JS_DEV_FILE = new URL(
-  "../dist/tic-tac-toe-ception.modern.js",
-  import.meta.url
-);
-export const JS_DEV_FILE_MAP = new URL(
-  "../dist/tic-tac-toe-ception.modern.js.map",
-  import.meta.url
-);
+export const ESM_FILE = "tic-tac-toe-ception.modern.js";
+export const ES5_FILE = "tic-tac-toe-ception.js";
+
+export const SW_FILE = "sw.js";

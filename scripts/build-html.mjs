@@ -3,12 +3,7 @@ import { promises as fs } from "fs";
 import csso from "csso";
 import marked from "marked";
 
-import {
-  SOURCE_FOLDER,
-  DIST_FOLDER,
-  ESM_FILE,
-  ES5_FILE,
-} from "./build-config.mjs";
+import { SOURCE_FOLDER, DIST_FOLDER, ESM_FILE, ES5_FILE } from "./config.mjs";
 
 export default Promise.all(
   ["index.html", "main.css", "../RULES.md"].map((fileName) =>
