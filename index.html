@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Tic-tac-toe-ception</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>*{box-sizing:border-box;text-align:center}body{margin:0;padding:0;display:grid}.tic-tac-toe,main{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);border:2px solid #000}main{margin:0 auto;min-height:90vmin}.cell{width:10vmin;height:10vmin;border:1px solid #000;-webkit-appearance:none;appearance:none}.cell::before{content:attr(data-player)}.cell:disabled{color:unset;background-color:gray}.cell:focus::after{outline:1px solid #00f}.win,.win:disabled{background-color:#0ff}canvas{position:absolute}dialog canvas{position:fixed;bottom:1rem;left:0}dialog::backdrop{background-color:#222b}</style>
+    <style>*{box-sizing:border-box;text-align:center}body{margin:0;padding:0;display:grid;grid-template-rows:auto 1fr auto auto}body,html{height:100%}h1{display:flex;align-items:center;justify-content:center}footer{margin:auto 0 1rem}.tic-tac-toe,main{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);border:2px solid #000}main{margin:auto}details{margin:1rem 0}.cell{width:10vmin;height:10vmin;min-width:2rem;min-height:2rem;border:1px solid #000;-webkit-appearance:none;appearance:none}.cell::before{content:attr(data-player)}.cell:disabled{color:unset;background-color:gray}.cell:focus::after{outline:1px solid #00f}.win,.win:disabled{background-color:#0ff}canvas{position:absolute}dialog canvas{position:fixed;bottom:1rem;left:0}dialog::backdrop{background-color:#222b}</style>
     <script src="tic-tac-toe-ception.modern.js" type="module"></script><script src="tic-tac-toe-ception.js" nomodule></script>
     <meta name="description" content="Mini-game written in JavaScript" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -22,19 +22,20 @@
     <details>
       <summary>Rules of the game</summary>
       <p>It&#39;s a tic-tac-toe game, except each case is a tic-tac-toe game.</p>
-<h2 id="game-grid">Game grid</h2>
-<p>The game grid is composed of a 9×9 grid, composed of 9 3×3 sub-grids, each
-containing a game of the classic tic-tac-toe.</p>
-<h2 id="game-play">Game Play</h2>
+<h4 id="game-grid">Game grid</h4>
+<p>The game grid is composed of a 3×3 grid of 9 3×3 sub-grids, each containing a
+game of the classic tic-tac-toe.</p>
+<h4 id="game-play">Game Play</h4>
 <p>In order to win the game, a player must win three tic-tac-toe grids in a
 horizontal, vertical, or diagonal row.</p>
 <p>The player playing ❌ team starts the game by placing their mark on a grid cell.
 Then the player playing ⭕︎ team takes the turn.</p>
 <p>When a player places their mark, it dictates in which sub-grid the next move
-must take place.</p>
+must take place. E.G.: If the previous player places its mark in the top-right
+cell of any sub-grid, the next move must be placed on the top-right sub-grid.</p>
 <p>When a cell is marked, it is forbidden to mark it again, unless the sub-grid is
 already full and the player must place a move.</p>
-<h2 id="end-of-the-game">End of the game</h2>
+<h4 id="end-of-the-game">End of the game</h4>
 <p>The game stops either:</p>
 <ul>
 <li>When a player wins. The player who has won three tic-tac-toe games in a
