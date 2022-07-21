@@ -6,7 +6,7 @@
     "gh-pages": "^3.0.0",
     "marked": "^1.1.0",
     "microbundle": "^0.12.0",
-    "terser": "^4.8.0",
+    "terser": "^4.8.1",
     "ws": "^7.3.0"
   },
   "module": "dist/main.js",
